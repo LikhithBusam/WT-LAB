@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        h2 {
+            margin: 20px 0;
+            color: #333;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .addItems input, .addItems textarea {
+            width: 100%;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .addItems button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .addItems button:hover {
+            background: #0056b3;
+        }
+        .todoList .task {
+            background: #fff;
+            margin: 10px 0;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .task.completed {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+        .task button {
+            padding: 5px;
+            border: none;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        .complete { background: #28a745; color: white; }
+        .edit { background: #ffc107; }
+        .delete { background: #dc3545; color: white; }
+    </style>
+</head>
+<body>
+    <h2>ToDo List</h2>
+    <div class="container">
+        <div class="addItems">
+            <b><label for="taskTitle">Add Items</label></b>
+            <input type="text" id="taskTitle" placeholder="Title" autofocus />
+            <textarea id="taskDescription" placeholder="Description"></textarea>
+            <button onclick="addTask()">Submit</button>
+        </div>
+        <div class="todoList" id="todoList"></div>
+    </div>
+
+    <script>
+        function addTask() {
+            let title = document.getElementById('taskTitle').value;
+            let description = document.getElementById('taskDescription').value;
+            if (title.trim() === "") {
+                alert("Title cannot be empty!");
+                return;
+            }
+            
+            let todoList = document.getElementById('todoList');
+            let taskDiv = document.createElement('div');
+            taskDiv.classList.add('task');
+            
+            taskDiv.innerHTML = `
+                <div class="taskContent">
+                    <strong>${title}</strong>
+                    <p>${description}</p>
+                </div>
+                <button class="complete" onclick="toggleTask(this)">&#10003;</button>
+                <button class="edit" onclick="editTask(this)">Edit</button>
+                <button class="delete" onclick="deleteTask(this)">Delete</button>
+            `;
+            
+            todoList.appendChild(taskDiv);
+            
+            document.getElementById('taskTitle').value = "";
+            document.getElementById('taskDescription').value = "";
+        }
+        
+        function toggleTask(button) {
+            button.parentElement.classList.toggle('completed');
+        }
+        
+        function deleteTask(button) {
+            button.parentElement.remove();
+        }
+
+        function editTask(button) {
+            let taskDiv = button.parentElement;
+            let title = taskDiv.querySelector("strong").innerText;
+            let description = taskDiv.querySelector("p").innerText;
+            
+            let newTitle = prompt("Edit Title:", title);
+            let newDescription = prompt("Edit Description:", description);
+            
+            if (newTitle !== null) taskDiv.querySelector("strong").innerText = newTitle;
+            if (newDescription !== null) taskDiv.querySelector("p").innerText = newDescription;
+        }
+    </script>
+</body>
+</html>

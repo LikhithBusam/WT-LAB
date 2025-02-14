@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
     <head>
         <title>Sign In</title>
@@ -13,13 +13,7 @@
             function validateEmail(){
                 if(!name.value.match(/^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][]))
             }
-           
-
-
-
-
-
-            
+              
         </script>
     </head>
 
@@ -45,7 +39,7 @@
 </div>
 <script>
     document.getElementById("demo").onclick= function(){
-        window.alert(`Successfully Signed`)
+        window.alert(Successfully Signed)
     }
 </script>
 
@@ -55,5 +49,68 @@
 
 
 
+    </body>
+</html> -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign In</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="lab2.css">
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const name = document.getElementById("name");
+                const password = document.getElementById("password");
+                const form = document.getElementById("form");
+                const emailError = document.createElement("small");
+                emailError.style.color = "red";
+                emailError.style.display = "none";
+                name.parentNode.appendChild(emailError);
+
+                function validateEmail() {
+                    const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+                    if (!emailPattern.test(name.value)) {
+                        emailError.textContent = "Invalid Email Format";
+                        emailError.style.display = "block";
+                        return false;
+                    } else {
+                        emailError.style.display = "none";
+                        return true;
+                    }
+                }
+
+                name.addEventListener("keyup", validateEmail);
+
+                document.getElementById("demo").addEventListener("click", function (event) {
+                    if (!validateEmail()) {
+                        event.preventDefault();
+                    } else {
+                        alert("Successfully Signed In");
+                    }
+                });
+            });
+        </script>
+    </head>
+
+    <body style="background-image: url('image.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+        <div class="form-container">
+            <form id="form" action="/" method="get"> 
+                <div class="form-group">
+                    <label for="name">Email or phone number </label><br>
+                    <input type="email" id="name" required><br>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label><br>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div style="width:100%; padding-top: 20px;">
+                    <a href="forget.html" style="color: rgb(223, 91, 15);">Forgot password?</a>
+                </div>
+                <div class="form-group">
+                    <button id="demo" type="submit">Sign In</button>
+                </div>
+            </form>
+        </div>
     </body>
 </html>
