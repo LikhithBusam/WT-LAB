@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Tasks</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .highlight { background-color: yellow; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <!-- Task 1: Basic jQuery Selectors -->
+    <p>This is a paragraph.</p>
+    <p class="test">This paragraph has a class 'test'.</p>
+    <div class="test">This div has a class 'test'.</div>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    
+    <!-- Task 2: Manipulating Attributes -->
+    <a href="http://example.com">Example Link</a>
+    <a href="http://example.com" target="_self">Example Link with target</a>
+    <a href="http://anotherwebsite.com">Another Link</a>
+    <img src="image.jpg" title="Old Title">
+    
+    <!-- Task 3: jQuery Effects -->
+    <div>
+        <p id="effect-paragraph">This paragraph will be shown or hidden.</p>
+        <button id="hide-btn">Hide</button>
+        <button id="show-btn">Show</button>
+        <button id="toggle-btn">Toggle</button>
+    </div>
+    
+    <div id="effect-box" style="width: 100px; height: 100px; background-color: aqua; margin-top: 20px;"></div>
+    <button id="fade-in">Fade In</button>
+    <button id="fade-out">Fade Out</button>
+    <button id="fade-toggle">Fade Toggle</button>
+    
+    <script>
+        $(document).ready(function() {
+            // Task 1: Basic jQuery Selectors
+            $('p').css('background-color','lightblue');
+            $('.test').hide();
+            $('ul li').addClass('highlight');
+
+            // Task 2: Manipulating Attributes
+            $('a[href*="example.com"]').attr('href', 'http://google.com');
+            $('a:not([target])').attr('target', '_blank');
+            $('img').attr('title', 'Updated Image');
+            
+            // Task 3: jQuery Effects
+            $('#hide-btn').click(function() {
+                $('#effect-paragraph').hide();
+            });
+            $('#show-btn').click(function() {
+                $('#effect-paragraph').show();
+            });
+            $('#toggle-btn').click(function() {
+                $('#effect-paragraph').toggle();
+            });
+            
+            $('#fade-in').click(function() {
+                $('#effect-box').fadeIn();
+            });
+            $('#fade-out').click(function() {
+                $('#effect-box').fadeOut();
+            });
+            $('#fade-toggle').click(function() {
+                $('#effect-box').fadeToggle();
+            });
+        });
+    </script>
+</body>
+</html>

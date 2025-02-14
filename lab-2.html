@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign In</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="lab2.css">
+        <script>
+            const name=document.getElementById("name");
+            const password=document.getElementById("password");
+            const form=document.getElementById("form");
+            
+            function validateEmail(){
+                if(!name.value.match(/^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][]))
+            }
+           
+
+
+
+
+
+            
+        </script>
+    </head>
+
+    <body style="background-image: url('image.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;"></body>
+     <div class="form-container">
+        <form id="form" action="/" method="get"> 
+            <div class="form-group">
+                <label for="name">Email or phone number </label><br>
+                <input type="Email" id="name" onkeyup="validateEmail()" required><br>
+            </div>
+            <div class="form-group">
+                <label for="password">password</label><br>
+                <input type="password" id="password" name="password"  required>
+            </div>
+            <div style="width:100%;padding-top: 20px;">
+                <a href="forget.html" style="color: rgb(15, 223, 223);">forgot password</a>
+            </div>
+            <div class="form-group">
+            <button id="demo" type="submit">Sign In</button>
+            </div>
+        </form>
+
+</div>
+<script>
+    document.getElementById("demo").onclick= function(){
+        window.alert(`Successfully Signed`)
+    }
+</script>
+
+
+
+
+
+
+
+    </body>
+</html>

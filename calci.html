@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .calculator_body {
+            height : 300px;
+            width : 250px;
+            background-color: #3D3D3C;
+            margin: 20px auto;
+            padding: 30px;
+            border-radius: 10px;
+            padding-top: 30px;
+
+        }
+        .screen{
+            text-align: right;
+            font-size: 20px;
+            display: block;
+            margin : 0 auto; 
+            padding : 5px 10px;
+            margin-bottom: 20px;
+        }
+        .class_btn{
+            width: 50px;
+            text-align: center;
+            padding: 2px 0;
+            font-size: 20px;
+            margin : 3px;
+            border :  0.5px solid black;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .class_btn:hover{
+            box-shadow: 0 0 5px 0 #fff;
+            transition: 0.5s;
+        }
+        .button_container{
+            height  :200px;
+            width : 250px;
+            display:flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btn_equals{
+            background-color: #ff6348;
+            height : 70px;
+            color : #fff;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="calculator_body">
+        <input type="'text" value='0' class="screen">
+        <div class="button_container">
+        <button onclick="appendInput('AC')" class="class_btn">AC</button>
+        <button onclick="appendInput('7')"class="class_btn">7</button>
+        <button onclick="appendInput('4')" class="class_btn">4</button>
+        <button onclick="appendInput('1')" class="class_btn">1</button>
+        <button onclick="appendInput('0')" class="class_btn">0</button>
+
+        <button onclick="appendInput('M+')" class="class_btn">M+</button>
+        <button onclick="appendInput('8')" class="class_btn">8</button>
+        <button onclick="appendInput('5')" class="class_btn">5</button>
+        <button onclick="appendInput('2')" class="class_btn">2</button>
+        <button onclick="appendInput('.')" class="class_btn">.</button>
+        
+        <button onclick="appendInput('/')" class="class_btn">/</button>
+        <button onclick="appendInput('9')" class="class_btn">9</button>
+        <button onclick="appendInput('6')" class="class_btn">6</button>
+        <button onclick="appendInput('3')" class="class_btn">3</button>
+        <button onclick="appendInput('%')" class="class_btn">%</button>
+        
+        <button onclick="appendInput('X')" class="class_btn">X</button>
+        <button onclick="appendInput('+')" class="class_btn" >+</button>
+        <button onclick="appendInput('-')" class="class_btn">-</button>
+        <button onclick="calculateResult()" class="class_btn btn_equals">=</button> 
+
+       
+           
+        </div>
+    </div> 
+    
+    </body></html>

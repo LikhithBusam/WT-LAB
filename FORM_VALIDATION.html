@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .form-container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            background: url('slider1.jpg') no-repeat center center/cover;
+            animation: bgSlider 10s infinite;
+            border-radius: 10px;
+        }
+        @keyframes bgSlider {
+            0% { background-image: url('slider1.jpg'); }
+            50% { background-image: url('slider2.jpg'); }
+            100% { background-image: url('slider3.jpg'); }
+        }
+        label { font-weight: bold; }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .error { color: red; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <center>
+            <h1>Form Validation with Password</h1>
+            <form name="myform" method="post" onsubmit="return validation()">
+                <label for="name1">Name</label>
+                <input type="text" id="name1" pattern="[a-zA-Z]{3,}" title="Name should be at least 3 alphabetic characters" required>
+                <br><br>
+                
+                <label for="email1">Email</label>
+                <input type="email" id="email1" required><br><br>
+                
+                <label for="date1">Date of Birth</label>
+                <input type="date" id="date1" required><br><br>
+                
+                <label for="mobile1">Mobile Number</label>
+                <input type="text" id="mobile1" pattern="[6-9][0-9]{9}" title="Mobile number should start with 6, 7, 8, or 9 and be 10 digits long" required><br><br>
+                
+                <label for="password1">Password</label>
+                <input type="password" id="password1" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*])[A-Za-z\d@#$%^&*]{8,}$" title="Password must be at least 8 characters long, including one uppercase letter, one lowercase letter, one digit, and one special character" required><br><br>
+                
+                <input type="submit" value="Submit">
+            </form>
+        </center>
+    </div>
+    
+    <script>
+        function validation() {
+            var email = document.myform.email1.value.trim();
+            var emailpattern = /^[Nn][0-9]{6}@rgukt\.ac\.in$/;
+            if (!emailpattern.test(email)) {
+                alert("Please enter a valid email starting with N or n in the format N210781@rgukt.ac.in");
+                return false;
+            }
+            
+            var current = new Date();
+            var dob = new Date(document.myform.date1.value);
+            if (dob >= current) {
+                alert("Please enter a valid Date of Birth (DOB). It cannot be today or a future date");
+                return false;
+            }
+            
+            var mobile = document.myform.mobile1.value.trim();
+            var mobilepattern = /^[6-9][0-9]{9}$/;
+            if (!mobilepattern.test(mobile)) {
+                alert("Mobile number should start with 6, 7, 8, or 9 and be 10 digits long.");
+                return false;
+            }
+            
+            var password = document.myform.password1.value.trim();
+            var passwordpattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*])[A-Za-z\d@#$%^&*]{8,}$/;
+            if (!passwordpattern.test(password)) {
+                alert("Password must be at least 8 characters long, including one uppercase letter, one lowercase letter, one digit, and one special character");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
